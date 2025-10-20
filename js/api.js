@@ -8,7 +8,7 @@ const api = {
             return await response.data; 
         } catch (error) {
             alert("Erro ao buscar pensamentos");
-            throw Error;
+            throw error;
         }
     },
 
@@ -18,7 +18,7 @@ const api = {
             return await response.data;
         } catch (error) {
             alert("Erro ao salvar o pensamento");
-            throw Error;
+            throw error;
         }
     },
 
@@ -48,7 +48,7 @@ const api = {
             return await response.data;
         } catch (error) {
             alert("Erro ao editar o pensamento");
-            throw Error;
+            throw error;
         }
     }, 
 
@@ -57,9 +57,34 @@ const api = {
             await axios.delete(`${URL_BASE}pensamentos/${id}`);
         } catch (error) {
             alert("Erro ao excluir o pensamento");
-            throw Error;
+            throw error;
         }
-    }    
+    },
+
+    async buscarPensamentosPorTermo(termo){
+        try {
+            const pensamentos = await this.buscarPensamentos();
+            const termoEmMinusculas = termo.toLowerCase();
+            const pensamentosFiltrados = pensamentos.filter(pensamento => {
+                return (pensamento.conteudo.toLowerCase().includes(termoEmMinusculas)) || pensamento.autoria.toLowerCase().includes(termoEmMinusculas);
+            });
+            return pensamentosFiltrados;
+        } catch (error) {
+            alert("Erro ao filtrar pensamentos");
+            throw error;
+        }
+        
+    },
+
+    async atualizarFavorito(id, favorito) {
+        try {
+            const response = await axios.patch(`${URL_BASE}pensamentos/${id}`, {favorito});
+            return response.data;
+        } catch (error) {
+            alert("Erro ao atualizar favorito");
+            throw error;
+        }
+    }
 }
 
 export default api;
