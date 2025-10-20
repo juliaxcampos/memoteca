@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CRUD de Pensamentos</title>
+    <title>Memoteca</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -33,22 +33,12 @@
           <label for="pensamento-conteudo">Pensamento</label>
           <textarea id="pensamento-conteudo" placeholder="Digite seu pensamento" required></textarea>
           <label for="pensamento-autoria">Autoria ou Fonte</label>
-          <input 
-            type="text" 
-            id="pensamento-autoria" 
-            placeholder="Insira a autoria ou fonte" 
-            required /> 
+          <input type="text" id="pensamento-autoria" placeholder="Insira a autoria ou fonte" required />
+          <label for="pensamento-data">Data</label>
+          <input type="date" name="" id="pensamento-data" required> 
             <div class="form-botoes">
-              <button 
-                type="submit" 
-                id="botao-salvar">
-                Salvar
-              </button>
-              <button 
-                type="button" 
-                id="botao-cancelar">
-                Cancelar
-              </button>
+              <button type="submit" id="botao-salvar">Salvar</button>
+              <button type="button" id="botao-cancelar">Cancelar</button>
             </div>
         </form>
       </section>
